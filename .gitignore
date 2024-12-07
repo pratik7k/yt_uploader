@@ -1,0 +1,9 @@
+/yt/
+# Ignore puppeteer local Chromium
+ts_based/
+
+# Ignore headless shell files
+chrome-headless-shell-win64/
+
+# Ignore Chrome files
+chrome-win64/
