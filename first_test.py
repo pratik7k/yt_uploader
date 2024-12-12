@@ -15,8 +15,8 @@ options.add_argument("--no-sandbox")
 
 #______________________________________________________________________________________________________________________________________
 #C:\Users\prati\AppData\Local\Google\Chrome for Testing\User Data
-# options.add_argument(r"C:\Users\prati\AppData\Local\Google\Chrome for Testing\User Data")  # Path to your Chrome data
-# options.add_argument("--profile-directory=Default")
+options.add_argument(r"--user-data-dir=C:\Users\prati\AppData\Local\Google\Chrome for Testing\User Data")  # Replace with your Chrome user data directory
+options.add_argument("--profile-directory=Default")
 #_______________________________________________________________________________________________________________________________________
 
 
@@ -26,11 +26,11 @@ driver = webdriver.Chrome(options=options)  # Replace with webdriver.Firefox() o
 
 driver.maximize_window()
 # Step 2: Open a website
-driver.get(r"https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&ec=65620&hl=en&ifkv=AcMMx-cQvlH_Y6UUiVgtXs1Z_iS0aTfpzHIsS0T_zO9fhMc1sf3uM0xazrjibwzaROhab-ho06n4&passive=true&service=youtube&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1993052362%3A1733489554065220&ddm=1")
+# driver.get(r"https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&ec=65620&hl=en&ifkv=AcMMx-cQvlH_Y6UUiVgtXs1Z_iS0aTfpzHIsS0T_zO9fhMc1sf3uM0xazrjibwzaROhab-ho06n4&passive=true&service=youtube&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1993052362%3A1733489554065220&ddm=1")
 
-# driver.get(r"https://www.youtube.com/")
+driver.get(r"https://www.youtube.com/")
 
-time.sleep(5)
+time.sleep(500)
 
 email = "greatminds2k24@gmail.com"
 password = "GreatMinds@224"

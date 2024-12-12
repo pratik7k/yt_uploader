@@ -7,3 +7,5 @@ chrome-headless-shell-win64/
 
 # Ignore Chrome files
 chrome-win64/
+
+vids/

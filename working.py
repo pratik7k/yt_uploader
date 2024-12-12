@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
@@ -12,31 +13,15 @@ options = Options()
 options.add_experimental_option("detach", True) 
 options.add_argument("--no-sandbox")
 
+options.add_argument(r"--user-data-dir=C:\Users\prati\AppData\Local\Google\Chrome for Testing\User Data")  # Replace with your Chrome user data directory
+options.add_argument("--profile-directory=Default")
 
 
 driver = webdriver.Chrome(options=options)
 
 driver.maximize_window()
 
-
-driver.get(r"https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&ec=65620&hl=en&ifkv=AcMMx-cQvlH_Y6UUiVgtXs1Z_iS0aTfpzHIsS0T_zO9fhMc1sf3uM0xazrjibwzaROhab-ho06n4&passive=true&service=youtube&uilel=3&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1993052362%3A1733489554065220&ddm=1")
-
-
-time.sleep(5)
-
-email = "greatminds2k24@gmail.com"
-password = "GreatMinds@224"
-
-pyautogui.typewrite(email)
-pyautogui.press('enter')
-
-time.sleep(2)
-
-pyautogui.typewrite(password)
-pyautogui.press('enter') 
-
-
-time.sleep(5)
+driver.get(r"https://www.youtube.com/")
 
 
 #_______________________________________________________________________________________________________________________________________
@@ -54,6 +39,30 @@ upload_videos_button = WebDriverWait(driver, 30).until(
 
 upload_videos_button.click()
 
+driver.implicitly_wait(5)
+
+
+actions = ActionChains(driver)
+
+#_______________________________________________________________________________________________________________________________________
+# clicks the select files button
+
+# Perform Shift + Tab 5 times
+for _ in range(4):
+    actions.key_down(Keys.SHIFT).send_keys(Keys.TAB).key_up(Keys.SHIFT).perform()
+    # time.sleep(1)
+
+# Press Enter
+actions.send_keys(Keys.ENTER).perform()
+
+#_______________________________________________________________________________________________________________________________________
+
+# select_files_button = WebDriverWait(driver, 30).until(
+#     EC.element_to_be_clickable((By.CSS_SELECTOR, "#select-files-button > ytcp-button-shape > button > yt-touch-feedback-shape > div > div.yt-spec-touch-feedback-shape__fill"))
+# )
+
+# select_files_button.click()
+
 #_______________________________________________________________________________________________________________________________________
 # upload_videos button on the orignal website page
 # /html/body/ytd-app/ytd-popup-container/tp-yt-iron-dropdown/div/ytd-multi-page-menu-renderer/div[3]/div[1]/yt-multi-page-menu-section-renderer/div[2]/ytd-compact-link-renderer[1]/a/tp-yt-paper-item
@@ -62,8 +71,14 @@ upload_videos_button.click()
 # document.querySelector("#button > yt-icon > span > div")
 # #button > yt-icon > span > div
 # /html/body/ytd-app/div[1]/div[2]/ytd-masthead/div[4]/div[3]/div[2]/ytd-topbar-menu-button-renderer[1]/div/a/yt-icon-button/button/yt-icon/span/div
-#_______________________________________________________________________________________________________________________________________
 
+#_______________________________________________________________________________________________________________________________________
+# select files button
+# /html/body/ytcp-uploads-dialog/tp-yt-paper-dialog/div/ytcp-uploads-file-picker/div/ytcp-button/ytcp-button-shape/button/yt-touch-feedback-shape/div/div[2]
+# #select-files-button > ytcp-button-shape > button > yt-touch-feedback-shape > div > div.yt-spec-touch-feedback-shape__fill
+# //*[@id="select-files-button"]/ytcp-button-shape/button/yt-touch-feedback-shape/div/div[2]
+
+#_______________________________________________________________________________________________________________________________________
 # upload videos button on channel content page
 # #text-item-0 > ytcp-ve > tp-yt-paper-item-body > div > div > div > yt-formatted-string
 # //*[@id="text-item-0"]/ytcp-ve/tp-yt-paper-item-body/div/div/div/yt-formatted-string
