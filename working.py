@@ -69,6 +69,7 @@ file_input = WebDriverWait(driver, 30).until(
 
 file_input.send_keys(r"C:\Users\prati\OneDrive\Desktop\projects\yT_uploader\vids\video.mp4")
 
+# time.sleep(10)
 #_______________________________________________________________________________________________________________________________________
 # write title and description 
 actions = ActionChains(driver)
@@ -95,7 +96,20 @@ for char in description:
     actions.send_keys(char).perform()
     # time.sleep(1)
 
-time.sleep(500)    
+#_______________________________________________________________________________________________________________________________________
+# to press not for children field
+# actions.key_down(Keys.SHIFT).send_keys(Keys.TAB).key_up(Keys.SHIFT).perform() // for pushing shift+tab
+
+
+for _ in range(10):
+    actions.send_keys(Keys.TAB).perform()
+    time.sleep(0.2) 
+
+# Press the Down Arrow key slowly
+actions.send_keys(Keys.ARROW_DOWN).perform()
+
+
+time.sleep(5)    
 #_______________________________________________________________________________________________________________________________________
 
 # pressing next button 
@@ -103,6 +117,32 @@ next_button = WebDriverWait(driver, 30).until(
     EC.presence_of_element_located((By.XPATH, '/html/body/ytcp-uploads-dialog/tp-yt-paper-dialog/div/ytcp-animatable[2]/div/div[2]/ytcp-button[2]/ytcp-button-shape/button/yt-touch-feedback-shape/div/div[2]'))
 )
 next_button.click()
+time.sleep(0.2)
+next_button.click()
+time.sleep(0.2)
+next_button.click()
+
+#_______________________________________________________________________________________________________________________________________
+# for publishing the video 
+for _ in range(9):
+    actions.send_keys(Keys.TAB).perform()
+    time.sleep(0.2)
+
+time.sleep(3)
+
+actions.send_keys(Keys.ARROW_DOWN).perform()
+
+actions.send_keys(Keys.ARROW_DOWN).perform()
+
+#_______________________________________________________________________________________________________________________________________
+# clicking the publish button 
+# /html/body/ytcp-uploads-dialog/tp-yt-paper-dialog/div/ytcp-animatable[2]/div/div[2]/ytcp-button[3]/ytcp-button-shape/button/yt-touch-feedback-shape/div/div[2]
+publish_button = WebDriverWait(driver, 30).until(
+    EC.presence_of_element_located((By.XPATH, '/html/body/ytcp-uploads-dialog/tp-yt-paper-dialog/div/ytcp-animatable[2]/div/div[2]/ytcp-button[3]/ytcp-button-shape/button/yt-touch-feedback-shape/div/div[2]'))
+)
+
+publish_button.click()
+
 #_______________________________________________________________________________________________________________________________________
 
 # select_files_button = WebDriverWait(driver, 30).until(
